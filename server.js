@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var routes = require('./routes');
 var http = require('http');
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/seriousnotesapp_development');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/seriousnotesapp_development');
 
 var app = express();
 var seriousNotesRouter = express.Router();
