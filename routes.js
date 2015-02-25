@@ -8,7 +8,7 @@ module.exports = function (router) {
 
 	router.get('/seriousnotes/:noteID', function(req,res) {
 		SeriousNote.findOne({noteID: req.params.noteID}, function(err, data) {
-			if(err) return res.status(500).send({'msg': 'the goats ran off, and could not be retrieved.'});
+			if(err) return res.status(500).send({'msg': 'There was an error retrieving your notes.'});
 
 			res.json(data);
 		});
@@ -27,7 +27,7 @@ module.exports = function (router) {
 	    var updatedNote = req.body;
 	    delete updatedNote._id;
 	    SeriousNote.update({_id: req.params.id}, updatedNote, function(err) {
-	      if (err) return res.status(500).send({'msg': 'this note has proved resistant to update.'});
+	      if (err) return res.status(500).send({'msg': 'This note has proved resistant to update.'});
 
 	      res.json(req.body);
 	    });
