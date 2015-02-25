@@ -6,8 +6,8 @@ module.exports = function (router) {
 
 	router.use(bodyparser.json());
 
-	router.get('/seriousnotes', function(req,res) {
-		SeriousNote.find({}, function(err, data) {
+	router.get('/seriousnotes/:noteID', function(req,res) {
+		SeriousNote.findOne({noteID: req.params.noteID}, function(err, data) {
 			if(err) return res.status(500).send({'msg': 'the goats ran off, and could not be retrieved.'});
 
 			res.json(data);
