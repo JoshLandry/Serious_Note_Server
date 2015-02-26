@@ -32,3 +32,4 @@ node_modules
 # Mongo DB directories
 db-pets
 db-test
+dbtest
