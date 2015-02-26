@@ -38,17 +38,6 @@ describe('seriousnote api end points', function() {
       });
   });
 
-    // it('should have an index', function(done) {
-    //   chai.request('localhost:3000/api/v1')
-    //     .get('/seriousnote/')
-    //     .end(function(err, res) {
-    //       expect(err).to.eql(null);
-    //       expect(Array.isArray(res.body)).to.be.true;
-    //       expect(res.body[0]).to.have.property('recipientID');
-    //       done();
-    //     });
-    // });
-
     // it('should be able to update', function(done) {
     //   chai.request('localhost:3000/api/v1')
     //     .put('/pets/' + id)
