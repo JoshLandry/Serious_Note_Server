@@ -9,6 +9,8 @@ chai.use(chaihttp);
 
 var expect = chai.expect
 
+var entryToGet;
+
 describe('seriousnote api end points', function() {
   after(function(done) {
     mongoose.connection.db.dropDatabase(function() {
@@ -21,6 +23,8 @@ describe('seriousnote api end points', function() {
       .post('/seriousnote/')
       .send({reminderID: 755, textContent: 'Hank Aaron is the true home run king'})
       .end(function(err, res) {
+        entryToGet = res.body._id;
+        console.log(entryToGet);
         expect(err).to.eql(null);
         expect(res.body).to.have.property('_id');
         expect(res.body.textContent).to.eql('Hank Aaron is the true home run king');
@@ -28,28 +32,26 @@ describe('seriousnote api end points', function() {
       });
   });
 
-  describe('already has data in database', function() {
-    var id;
-    beforeEach(function(done) {
+  it('should GET a specific note', function(done) {
       chai.request('localhost:3000/api/v1')
-        .post('/seriousnote/')
-        .send({reminderID: 666})
-        .end(function(err, res) {
-          id = res.body._id;
-          done();
-        });
-    });
-
-    it('should have an index', function(done) {
-      chai.request('localhost:3000/api/v1')
-        .get('/seriousnote/')
+        .get('/seriousnote/' + 755)
         .end(function(err, res) {
           expect(err).to.eql(null);
-          expect(Array.isArray(res.body)).to.be.true;
-          expect(res.body[0]).to.have.property('recipientID');
+          expect(res.body.textContent).to.eql('Hank Aaron is the true home run king');
           done();
-        });
-    });
+      });
+  });
+
+    // it('should have an index', function(done) {
+    //   chai.request('localhost:3000/api/v1')
+    //     .get('/seriousnote/')
+    //     .end(function(err, res) {
+    //       expect(err).to.eql(null);
+    //       expect(Array.isArray(res.body)).to.be.true;
+    //       expect(res.body[0]).to.have.property('recipientID');
+    //       done();
+    //     });
+    // });
 
     // it('should be able to update', function(done) {
     //   chai.request('localhost:3000/api/v1')
@@ -72,4 +74,3 @@ describe('seriousnote api end points', function() {
     //     });
     // });
   });
-});
