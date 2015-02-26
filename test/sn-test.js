@@ -38,24 +38,13 @@ describe('seriousnote api end points', function() {
       });
   });
 
-    // it('should be able to update', function(done) {
-    //   chai.request('localhost:3000/api/v1')
-    //     .put('/pets/' + id)
-    //     .send({name: 'Demi'})
-    //     .end(function(err, res) {
-    //       expect(err).to.eql(null);
-    //       expect(res.body.name).to.eql('Demi');
-    //       done();
-    //     });
-    // });
-
-    // it('should be able to delete', function(done) {
-    //   chai.request('localhost:3000/api/v1')
-    //     .delete('/pets/' + id)
-    //     .end(function(err, res) {
-    //       expect(err).to.eql(null);
-    //       expect(res.body._id).to.eql(undefined);
-    //       done();
-    //     });
-    // });
+  it('should DELETE a note', function(done) {
+    chai.request('localhost:3000/api/v1')
+      .delete('/seriousnote/' + 755)
+      .end(function(err, res) {
+        expect(err).to.eql(null);
+        expect(res.body._id).to.eql(undefined);
+        done();
+      });
   });
+});
