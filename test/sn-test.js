@@ -23,7 +23,7 @@ describe('seriousnote api end points', function() {
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.body).to.have.property('_id');
-        expect(res.body.name).to.eql('Hank Aaron is the true home run king');
+        expect(res.body.textContent).to.eql('Hank Aaron is the true home run king');
         done();
       });
   });
@@ -42,11 +42,11 @@ describe('seriousnote api end points', function() {
 
     it('should have an index', function(done) {
       chai.request('localhost:3000/api/v1')
-        .get('/pets')
+        .get('/seriousnote/')
         .end(function(err, res) {
           expect(err).to.eql(null);
           expect(Array.isArray(res.body)).to.be.true;
-          expect(res.body[0]).to.have.property('name');
+          expect(res.body[0]).to.have.property('recipientID');
           done();
         });
     });
