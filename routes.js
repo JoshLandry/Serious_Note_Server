@@ -10,8 +10,6 @@ module.exports = function (router) {
 	router.get('/seriousnote/:reminderID', function(req,res) {
 		SeriousNote.findOne({reminderID: req.params.reminderID}, function(err, data) {
 			if(err) return res.status(500).send({'msg': 'There was an error retrieving your notes.'});
-
-			console.log("RES BODY [0] IS " + res.body[0]);
 			res.json(data);
 		});
 	});
@@ -20,7 +18,6 @@ module.exports = function (router) {
 		var newNote = new SeriousNote(req.body);
 		newNote.save(function(err, note) {
 			if (err) return res.status(500).send({'msg': 'Your note could not be saved.'});
-
 			res.json(note);
 		});
 	});
