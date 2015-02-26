@@ -9,8 +9,6 @@ chai.use(chaihttp);
 
 var expect = chai.expect
 
-var entryToGet;
-
 describe('seriousnote api end points', function() {
   after(function(done) {
     mongoose.connection.db.dropDatabase(function() {
@@ -23,8 +21,6 @@ describe('seriousnote api end points', function() {
       .post('/seriousnote/')
       .send({reminderID: 755, textContent: 'Hank Aaron is the true home run king'})
       .end(function(err, res) {
-        entryToGet = res.body._id;
-        console.log(entryToGet);
         expect(err).to.eql(null);
         expect(res.body).to.have.property('_id');
         expect(res.body.textContent).to.eql('Hank Aaron is the true home run king');
