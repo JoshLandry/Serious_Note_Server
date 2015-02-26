@@ -1,18 +1,18 @@
 # SeriousNote Server, by Josh Landry and Sam Hamm
-This is a simple REST API that uses the Express and MongoDB to support the iOS app SeriousNote by Brian Ledbetter and John Leonard.
+This is a simple REST API that uses Express and MongoDB to support the iOS app SeriousNote by Brian Ledbetter and John Leonard.
 
 The server receives POST and GET instructions.
 
 The following fields accept JSON data in the following formats:
 
 {
-  "reminderID": "Number"
-  "userID": "Number"
+  "reminderID": Number
+  "userID": Number
   "textContent": "String"
-  "mediaType": "Number"
+  "mediaType": Number
   "mediaContent": "Buffer"
-  "recipientID": "Number"
-  "messageType": "Number"
+  "recipientID": Number
+  "messageType": Number
 }
 
 **ReminderID**
