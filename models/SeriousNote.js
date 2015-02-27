@@ -3,11 +3,11 @@
 var mongoose = require('mongoose');
 
 var seriousNoteSchema = new mongoose.Schema({
-	reminderID: Number,
+  reminderID: Number,
   userID: Number,
   textContent: String,
   mediaType: Number,
-  mediaContent: Buffer,
+  mediaContent: String,
   recipientID: Number,
   messageType: Number,
 });
