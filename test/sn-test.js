@@ -23,7 +23,7 @@ describe('seriousnote api end points', function() {
   it('should respond to a POST request', function(done) {
     chai.request('localhost:3000/api/v1')
       .post('/seriousnote/')
-      .send({reminderID: 755, userID: 12345678, textContent: 'Hank Aaron is the true home run king', mediaType: 24, mediaContent: testSound.toString('hex'), recipientID: 5555555555, messageType: 0})
+      .send({reminderID: 755, userID: 1234567890, textContent: 'Hank Aaron is the true home run king', mediaType: 1, mediaContent: testSound.toString('hex'), recipientID: 5555555555, messageType: 0})
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.body).to.have.property('_id');
@@ -37,9 +37,9 @@ describe('seriousnote api end points', function() {
         .get('/seriousnote/' + 755)
         .end(function(err, res) {
           expect(err).to.eql(null);
-          expect(res.body.userID).to.eql(12345678);
+          expect(res.body.userID).to.eql(1234567890);
           expect(res.body.textContent).to.eql('Hank Aaron is the true home run king')
-          expect(res.body.mediaType).to.eql(24);
+          expect(res.body.mediaType).to.eql(1);
           expect(res.body.recipientID).to.eql(5555555555);
           expect(res.body.messageType).to.eql(0);
           done();
